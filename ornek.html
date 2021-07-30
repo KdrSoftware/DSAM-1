@@ -1,0 +1,70 @@
+<html>
+<head>
+	<title>DSAM Basit Mesaj Botu</title>
+</head>
+<body>
+	<center> 
+		<p style="font-size:20px;font-family:arial;color:red;">DSAM Basit Mesaj Botu</p>
+		<input type="text" id="mesaj">
+		<input type="button" onclick="mesaj()" value="Gönder">
+		<input type="button" onclick="izlen()" value="Kontrol">		
+	</center>	
+	<p>Kontrol Paneli</p>
+	<p id="izle"></p>
+</body>
+</html>
+<script src="dsam.js"></script>
+<script>
+dsam_data_boot(true,true)
+dsam_calm_boot(10,3000)
+function mesaj(){
+	mesage = document.getElementById("mesaj").value.split(" ")
+	if(mesage.includes("güzelsin")){
+		asel(100)
+	}else if(mesage.includes("çirkinsin")){
+		asel(-100)
+	}else if(mesage.includes("lan")){
+		savel(100)
+	}else if(mesage.includes("git")){
+		savel(-100)
+	}else if(mesage.includes("iyisin")){
+		bagel(100)
+	}else if(mesage.includes("kötüsün")){
+		bagel(-100)
+	}else if(mesage.includes("!")){
+		savel(70)
+	}else if(mesage.includes(":)")){
+		asel(80)
+		bagel(50)
+	}else if(mesage.includes(":(")){
+		asel(-80)
+	}else if(mesage == "nasılsın"){
+		modunuz = mood()
+		if(modunuz == "A" || modunuz == "D"){
+			alert("İyi değilim")
+		}else if(modunuz == "C"|| modunuz == "E"){
+			alert("Sanane")
+		}else if(modunuz == "B" || modunuz == "F"){
+			alert("İyim sen nasılsın ? ")
+		}
+	}else if(mesage == "kontrol"){
+		alert(dsam_check("asel"))
+		alert(dsam_check("savel"))
+		alert(dsam_check("bagel"))
+	}else if(mesage == "kayıt"){
+		dsam_save()
+	}else if(mesage == "yükle"){
+		dsam_load()
+	}else if(mesage == "stres"){
+		alert(dsam_stress())
+	}else if(mesage == "sakinleş"){
+		dsam_calm(10)
+	}else if(mesage == "temizle"){
+		dsam_clear(0)
+	}
+}
+function izlen(){
+	document.getElementById("izle").innerHTML = document.getElementById("izle").innerHTML + dsam_look() +"<br>"
+}
+
+</script>

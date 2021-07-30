@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chika Asistan</title>
+    </head>
+    <body>
+        <center>
+            <p style="font-size:20px;font-family:arial;color:blueviolet;">Chika Asistan</p><br>
+            <pre><input type="text" placeholder="Bana bir mesaj gönder :)" id="mesaj">  <input style="border-radius:12px;"type="button" value="Gönder" onclick="gönder()"></pre>
+            <pre><p id="cevap" style="font-family:arial;"></p></pre>
+        </center>
+        <p style="font-family:Arial;" id="konsol"></p>
+    </body>
+</html>
+<script src="dsam.js"></script>
+<script>
+dsam_data_boot(true,true)
+dsam_calm_boot(20,30000)
+function gönder(){
+    message = document.getElementById("mesaj").value
+    cevabım = ""
+    if(message == "güzelsin"){
+        asel(100)
+        bagel(50)
+        mod = mood()
+        if(mod == "B" || mod == "F"){
+            cevabım = "Teşekkürler sen de çok güzelsin"
+        }else if(mod == "A" || mod =="D"){
+            cevabım = "Sağ ol"
+        }else if(mod =="C" || mod=="E"){
+            cevabım = "Aynı şeyi senin için söyleyemeyeceğim"
+        }
+    }else if(message == "çirkinsin"){
+        asel(-100)
+        mod = mood()
+        if(mod == "B" || mod == "F"){
+            cevabım = "Sağ ol fikrin için"
+        }else if(mod == "A" || mod =="D"){
+            cevabım = "Keşke daha güzel biri olabilsem"
+        }else if(mod =="C" || mod=="E"){
+            cevabım = "Önce aynaya bak :)"
+        }
+    }else if(message == "git"){
+        savel(-100)
+        mod = mood()
+        if(mod == "B" || mod == "F"){
+            cevabım = "Neden böyle bir şey istiyorsun ? <br> Kötü bir şey mi yaptım ?"
+        }else if(mod == "A" || mod =="D"){
+            cevabım = "Tamam,özür dilerim ne yaptıysam"
+        }else if(mod =="C" || mod=="E"){
+            cevabım = "Sen git lan ben biye gidiyom ???"
+        }
+    }else if(message == "bıktım"){
+        savel(100)
+        mod = mood()
+        if(mod == "B" || mod == "F"){
+            cevabım = "noldu ?"
+        }else if(mod == "A" || mod =="D"){
+            cevabım = "sana ne yaptım ? :("
+        }else if(mod =="C" || mod=="E"){
+            cevabım = "Ee bundan banane ?"
+        }
+    }else if(message == "iyisin"){
+        bagel(100)
+        mod = mood()
+        if(mod == "B" || mod == "F"){
+            cevabım = "Çook teşekkür ederim. Sen de öylesin :)"
+        }else if(mod == "A" || mod =="D"){
+            cevabım = "Pek sanmıyorum"
+        }else if(mod =="C" || mod=="E"){
+            cevabım = "Evet , yeni mi öğrendin bunu ?"
+        }
+    }else if(message == "kötüsün"){
+        bagel(-100)
+        mod = mood()
+        if(mod == "B" || mod == "F"){
+            cevabım = "Sağ ol fikrin için"
+        }else if(mod == "A" || mod =="D"){
+            cevabım = "Daha iyi olmak için çalışıyorum..."
+        }else if(mod =="C" || mod=="E"){
+            cevabım = "Hadi lan ordan !"
+        }
+    }else if(message == "nasılsın"){
+        mod = mood()
+        if(mod == "B" || mod == "F"){
+            cevabım = "İyiyim Sen ?"
+        }else if(mod == "A" || mod =="D"){
+            cevabım = "İyi değilim"
+        }else if(mod =="C" || mod=="E"){
+            cevabım = "napcan  ?"
+        }
+    }else if(message == "sakinleş"){
+        cevabım = "Tamam"
+        dsam_calm(4)
+    }else if(message =="/konsol"){
+        document.getElementById("konsol").innerHTML = document.getElementById("konsol").innerHTML +dsam_look() + "<br>"
+    }
+    document.getElementById("cevap").innerHTML = cevabım
+}
+</script>
